@@ -9,13 +9,19 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "EditorVCSInterface",
+"base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
+}, {
+"base": "KinematicBody2D",
+"class": "Pushable",
+"language": "GDScript",
+"path": "res://Scenes/Objects/Pushable Body.gd"
 } ]
 _global_script_class_icons={
-"GitAPI": ""
+"GitAPI": "",
+"Pushable": ""
 }
 
 [application]
@@ -36,9 +42,13 @@ window/size/test_height=720
 version_control_autoload_on_startup=true
 version_control_plugin_name="GitAPI"
 
+[editor_plugins]
+
+enabled=PoolStringArray(  )
+
 [gdnative]
 
-singletons=[  ]
+singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
 
 [gui]
 
