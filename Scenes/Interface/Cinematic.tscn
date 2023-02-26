@@ -1,0 +1,166 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Visuals/Cinematic/1.png" type="Texture" id=1]
+[ext_resource path="res://Visuals/Cinematic/4.png" type="Texture" id=2]
+[ext_resource path="res://Visuals/Cinematic/2.png" type="Texture" id=3]
+[ext_resource path="res://Visuals/Cinematic/3.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Cinematic"
+length = 16.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.9, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.01, 5.9, 6.09 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TextureRect3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 8.6, 9.01234 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("TextureRect4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 11.0023, 12.0268 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TextureRect2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("TextureRect3:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("TextureRect4:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Gradient" id=3]
+
+[sub_resource type="GradientTexture2D" id=4]
+gradient = SubResource( 3 )
+width = 1920
+height = 1080
+
+[node name="Cinematic" type="Node2D"]
+
+[node name="AnimationCinematic" type="AnimationPlayer" parent="."]
+anims/Cinematic = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 1910.0
+margin_bottom = 1087.0
+texture = SubResource( 4 )
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 8000.0
+margin_bottom = 4500.0
+rect_scale = Vector2( 0.24, 0.24 )
+texture = ExtResource( 2 )
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+margin_right = 2050.0
+margin_bottom = 1254.0
+rect_scale = Vector2( 0.24, 0.24 )
+texture = ExtResource( 4 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_right = 8000.0
+margin_bottom = 4500.0
+rect_scale = Vector2( 0.24, 0.24 )
+texture = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 8000.0
+margin_bottom = 4500.0
+rect_scale = Vector2( 0.24, 0.24 )
+texture = ExtResource( 1 )
