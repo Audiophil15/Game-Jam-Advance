@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Game/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Caracters/Statue.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Scenes/Interface/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Maps/Forest.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Interface/Pause.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Maps/Beach.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Audio/Audio.tscn" type="PackedScene" id=8]
 
 [node name="Main" type="Control"]
 pause_mode = 2
@@ -16,10 +18,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Forest" parent="." instance=ExtResource( 5 )]
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Zone 1" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, 792 )
+
+[node name="Zone 3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1008, 24 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 744, 96 )
@@ -30,14 +33,14 @@ smoothing_speed = 15.0
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 pause_mode = 1
-position = Vector2( 744, 24 )
+position = Vector2( 108, 864 )
 
-[node name="Statue" parent="." instance=ExtResource( 2 )]
-position = Vector2( 144, 72 )
+[node name="Statue1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 144, 864 )
 statueID = 1
 
 [node name="Statue2" parent="." instance=ExtResource( 2 )]
-position = Vector2( -72, 120 )
+position = Vector2( 1740, 540 )
 statueID = 2
 
 [node name="Statue3" parent="." instance=ExtResource( 2 )]
@@ -57,7 +60,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[connection signal="mvp" from="Forest" to="." method="_on_Forest_mvp"]
-[connection signal="powerActivated" from="Statue" to="." method="_on_Statue_powerActivated"]
+[node name="Amb" parent="." instance=ExtResource( 8 )]
+
+[node name="Music" parent="." instance=ExtResource( 8 )]
+
+[connection signal="body" from="Zone 1" to="." method="bodyEnteredMap" binds= [ 1 ]]
+[connection signal="mvp" from="Zone 1" to="." method="_on_Forest_mvp"]
+[connection signal="powerActivated" from="Statue1" to="." method="_on_Statue_powerActivated"]
 [connection signal="powerActivated" from="Statue2" to="." method="_on_Statue_powerActivated"]
 [connection signal="powerActivated" from="Statue3" to="." method="_on_Statue_powerActivated"]
+
+[editable path="Statue1"]

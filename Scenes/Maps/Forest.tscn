@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/Maps/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Objects/Pushable Rock.tscn" type="PackedScene" id=2]
@@ -11,7 +11,8 @@
 [ext_resource path="res://Visuals/Objects/statuette.png" type="Texture" id=9]
 [ext_resource path="res://Scenes/Audio/Audio.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Audio/Sounds/Door.wav" type="AudioStream" id=11]
-[ext_resource path="res://Audio/Ambiances/Zone 1_v2_début.wav" type="AudioStream" id=12]
+[ext_resource path="res://Audio/Ambiances/Forêt_sombre.wav" type="AudioStream" id=12]
+[ext_resource path="res://Audio/Musics/Forest_sad+.wav" type="AudioStream" id=13]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 6 )
@@ -44,6 +45,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 468, 144 )
+
 [node name="Forest" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
 
@@ -61,7 +65,11 @@ tile_data = PoolIntArray( 0, 5, 0, 1, 5, 0, 2, 5, 0, 3, 5, 0, 6, 5, 0, 7, 5, 0, 
 stream = ExtResource( 12 )
 volume_db = -52.0
 
-[node name="Switch" parent="." index="8" instance=ExtResource( 3 )]
+[node name="Music" parent="." index="8" instance=ExtResource( 10 )]
+stream = ExtResource( 13 )
+volume_db = -23.507
+
+[node name="Switch" parent="." index="9" instance=ExtResource( 3 )]
 position = Vector2( 72, 216 )
 collision_layer = 0
 collision_mask = 16
@@ -69,7 +77,7 @@ collision_mask = 16
 [node name="Sprite" type="Sprite" parent="Switch" index="1"]
 texture = ExtResource( 8 )
 
-[node name="Switch2" parent="." index="9" instance=ExtResource( 3 )]
+[node name="Switch2" parent="." index="10" instance=ExtResource( 3 )]
 position = Vector2( 264, 264 )
 collision_layer = 0
 collision_mask = 16
@@ -77,7 +85,7 @@ collision_mask = 16
 [node name="Sprite" type="Sprite" parent="Switch2" index="1"]
 texture = ExtResource( 8 )
 
-[node name="Door" type="KinematicBody2D" parent="." index="10"]
+[node name="Door" type="KinematicBody2D" parent="." index="11"]
 position = Vector2( 144, 120 )
 __meta__ = {
 "_edit_group_": true
@@ -96,73 +104,73 @@ shape = SubResource( 4 )
 stream = ExtResource( 11 )
 volume_db = 3.562
 
-[node name="Pushable Rock" parent="." index="11" instance=ExtResource( 2 )]
+[node name="Pushable Rock" parent="." index="12" instance=ExtResource( 2 )]
 position = Vector2( 840, 120 )
 
-[node name="Pushable Rock2" parent="." index="12" instance=ExtResource( 2 )]
+[node name="Pushable Rock2" parent="." index="13" instance=ExtResource( 2 )]
 position = Vector2( 792, 120 )
 
-[node name="Pushable Rock3" parent="." index="13" instance=ExtResource( 2 )]
+[node name="Pushable Rock3" parent="." index="14" instance=ExtResource( 2 )]
 position = Vector2( 888, 120 )
 
-[node name="Pushable Rock4" parent="." index="14" instance=ExtResource( 2 )]
+[node name="Pushable Rock4" parent="." index="15" instance=ExtResource( 2 )]
 position = Vector2( 888, 168 )
 
-[node name="Pushable Rock5" parent="." index="15" instance=ExtResource( 2 )]
+[node name="Pushable Rock5" parent="." index="16" instance=ExtResource( 2 )]
 position = Vector2( 744, 264 )
 
-[node name="Pushable Rock6" parent="." index="16" instance=ExtResource( 2 )]
+[node name="Pushable Rock6" parent="." index="17" instance=ExtResource( 2 )]
 position = Vector2( 696, 264 )
 
-[node name="Pushable Rock7" parent="." index="17" instance=ExtResource( 2 )]
+[node name="Pushable Rock7" parent="." index="18" instance=ExtResource( 2 )]
 position = Vector2( 696, 168 )
 
-[node name="Pushable Rock8" parent="." index="18" instance=ExtResource( 2 )]
+[node name="Pushable Rock8" parent="." index="19" instance=ExtResource( 2 )]
 position = Vector2( 696, 120 )
 
-[node name="Pushable Rock9" parent="." index="19" instance=ExtResource( 2 )]
+[node name="Pushable Rock9" parent="." index="20" instance=ExtResource( 2 )]
 position = Vector2( 648, 120 )
 
-[node name="Pushable Rock10" parent="." index="20" instance=ExtResource( 2 )]
+[node name="Pushable Rock10" parent="." index="21" instance=ExtResource( 2 )]
 position = Vector2( 600, 120 )
 
-[node name="Pushable Rock11" parent="." index="21" instance=ExtResource( 2 )]
+[node name="Pushable Rock11" parent="." index="22" instance=ExtResource( 2 )]
 position = Vector2( 552, 120 )
 
-[node name="Pushable Rock12" parent="." index="22" instance=ExtResource( 2 )]
+[node name="Pushable Rock12" parent="." index="23" instance=ExtResource( 2 )]
 position = Vector2( 552, 168 )
 
-[node name="Pushable Rock13" parent="." index="23" instance=ExtResource( 2 )]
+[node name="Pushable Rock13" parent="." index="24" instance=ExtResource( 2 )]
 position = Vector2( 600, 216 )
 
-[node name="Pushable Rock14" parent="." index="24" instance=ExtResource( 2 )]
+[node name="Pushable Rock14" parent="." index="25" instance=ExtResource( 2 )]
 position = Vector2( 648, 216 )
 
-[node name="Pushable Rock15" parent="." index="25" instance=ExtResource( 2 )]
+[node name="Pushable Rock15" parent="." index="26" instance=ExtResource( 2 )]
 position = Vector2( 792, 168 )
 
-[node name="Pushable Rock16" parent="." index="26" instance=ExtResource( 2 )]
+[node name="Pushable Rock16" parent="." index="27" instance=ExtResource( 2 )]
 position = Vector2( 840, 216 )
 
-[node name="Pushable Rock17" parent="." index="27" instance=ExtResource( 2 )]
+[node name="Pushable Rock17" parent="." index="28" instance=ExtResource( 2 )]
 position = Vector2( 888, 216 )
 
-[node name="Pushable Rock18" parent="." index="28" instance=ExtResource( 2 )]
+[node name="Pushable Rock18" parent="." index="29" instance=ExtResource( 2 )]
 position = Vector2( 792, 264 )
 
-[node name="Pushable Rock19" parent="." index="29" instance=ExtResource( 2 )]
+[node name="Pushable Rock19" parent="." index="30" instance=ExtResource( 2 )]
 position = Vector2( 888, 264 )
 
-[node name="Pushable Rock20" parent="." index="30" instance=ExtResource( 2 )]
+[node name="Pushable Rock20" parent="." index="31" instance=ExtResource( 2 )]
 position = Vector2( 744, 216 )
 
-[node name="Pushable Rock21" parent="." index="31" instance=ExtResource( 2 )]
+[node name="Pushable Rock21" parent="." index="32" instance=ExtResource( 2 )]
 position = Vector2( 552, 264 )
 
-[node name="Pushable Rock22" parent="." index="32" instance=ExtResource( 2 )]
+[node name="Pushable Rock22" parent="." index="33" instance=ExtResource( 2 )]
 position = Vector2( 600, 264 )
 
-[node name="Pushable Body" parent="." index="33" instance=ExtResource( 7 )]
+[node name="Pushable Body" parent="." index="34" instance=ExtResource( 7 )]
 position = Vector2( 120, 264 )
 __meta__ = {
 "_edit_group_": true
@@ -176,7 +184,7 @@ frames = SubResource( 6 )
 position = Vector2( 10, -26 )
 polygon = PoolVector2Array( -24, 24, 4, 24, 4, 16, -24, 16 )
 
-[node name="Pushable Body2" parent="." index="34" instance=ExtResource( 7 )]
+[node name="Pushable Body2" parent="." index="35" instance=ExtResource( 7 )]
 position = Vector2( 240, 192 )
 __meta__ = {
 "_edit_group_": true
@@ -190,10 +198,17 @@ frames = SubResource( 6 )
 position = Vector2( 10, -26 )
 polygon = PoolVector2Array( -24, 24, 4, 24, 4, 16, -24, 16 )
 
+[node name="Area2D" type="Area2D" parent="." index="36"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2( 468, 144 )
+shape = SubResource( 7 )
+
 [connection signal="body_entered" from="Switch" to="." method="_on_Switch_body_entered"]
 [connection signal="body_exited" from="Switch" to="." method="_on_Switch_body_exited"]
 [connection signal="body_entered" from="Switch2" to="." method="_on_Switch_body_entered"]
 [connection signal="body_exited" from="Switch2" to="." method="_on_Switch_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 
 [editable path="Pushable Body"]
 [editable path="Pushable Body2"]

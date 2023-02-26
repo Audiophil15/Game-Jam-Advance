@@ -24,6 +24,14 @@ var isabletoDash
 var isabletoClimb
 var isabletoSwim
 
+var sndDash
+var sndSwim
+var sndStepForest
+var sndStepGrt
+var sndStepSand
+var sndPlouf
+
+
 """
 Masks :
 	1 Plain wall
@@ -54,6 +62,15 @@ func _ready():
 	isabletoDash = 0
 	isabletoClimb = 0
 	isabletoSwim = 0
+
+	sndDash = "res://Audio/Sounds/Dash_v1.wav"
+	sndSwim = "res://Audio/Sounds/Nage_v1.wav"
+	sndStepForest = "res://Audio/Sounds/pas_forêt_v1.wav"
+	sndStepGrt = "res://Audio/Sounds/pas_grotte_v1.wav"
+	sndStepSand = "res://Audio/Sounds/pas_sable_v1.wav"
+	sndPlouf = "res://Audio/Sounds/Plouf_v1.wav"
+
+	$Audio.stream = load(sndPlouf)
 
 #	learnDash()
 #	learnSwim()
@@ -90,6 +107,7 @@ func _process(_delta):
 			direction = "Up"
 		if isPushing :
 			movetype = "Push"
+
 	else :
 		movetype = "Idle"
 		if isSwimming :
@@ -129,6 +147,7 @@ func _on_Testbody_body_entered(body):
 	if body != self :
 		dashTestBodiesCounter += 1
 	if body.is_in_group("Water") :
+		$Audio.play()
 #		print("Swimming") #DEBUG
 		isSwimming = 1
 	if body.is_in_group("Cliff") :

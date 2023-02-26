@@ -6,7 +6,7 @@ var minVol = -40
 
 func fadein(from = minVol, to = 0) :
 	var fadein = $Tween
-	fadein.interpolate_property(self, "volume_db", from, to, 0.4)
+	fadein.interpolate_property(self, "volume_db", from, to, 1)
 	fadein.start()
 
 func fadeout():

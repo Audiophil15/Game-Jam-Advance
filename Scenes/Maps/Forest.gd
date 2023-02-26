@@ -1,6 +1,7 @@
 extends Map
 
 signal mvp(position)
+signal body(body)
 
 var activatedSwitches
 var hasplayed = 0
@@ -8,10 +9,11 @@ var hasplayed = 0
 func _ready():
 	self.dimensions = Vector2(936, 312)
 	$Audio.play()
+	$Music.play()
+	$Music.fadein(-35)
 	$Audio.fadein(-35)
 	activatedSwitches = 0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if activatedSwitches == 2 :
 		$Door/Sprite.play("opening")
@@ -28,5 +30,18 @@ func _on_Switch_body_exited(body):
 	activatedSwitches -= 1
 
 func _on_Tunnel_mvp(position):
-	emit_signal("mvp", position)
-	pass # Replace with function body.
+	emit_signal("mvp", position) # UNNEEDED
+
+func soundToHappy() :
+	$Audio.fadeout()
+	$Music.fadeout()
+	$Audio.stream = load("res://Audio/Ambiances/Forêt_joyeuse.wav")
+	$Music.stream = load("res://Audio/Musics/Forest_happy.wav")
+	$Audio.play()
+	$Music.play()
+	$Audio.fadein()
+	$Music.fadein(-35)
+
+
+func _on_Area2D_body_entered(body):
+	emit_signal("body", body)

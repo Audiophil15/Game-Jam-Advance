@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Audio/Audio.gd"
 }, {
-"base": "EditorVCSInterface",
+"base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Game Jam Advance"
-run/main_scene="res://Scenes/Interface/Cinematic.tscn"
+run/main_scene="res://Scenes/Game/Cinematic.tscn"
 config/icon="res://icon.png"
 
 [display]
