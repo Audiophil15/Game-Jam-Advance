@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Maps/Map.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Maps/Mountain.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Objects/Portal.tscn" type="PackedScene" id=3]
+
+[node name="Mountain" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Portal" parent="." index="8" instance=ExtResource( 3 )]
+toID = 1
+
+[node name="Portal2" parent="." index="9" instance=ExtResource( 3 )]
+selfID = 1
+toID = 2
+
+[node name="Portal3" parent="." index="10" instance=ExtResource( 3 )]
+selfID = 2
+toID = 3
+
+[node name="Portal4" parent="." index="11" instance=ExtResource( 3 )]
+selfID = 3

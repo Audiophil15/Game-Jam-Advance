@@ -1,6 +1,8 @@
 extends Node2D
 
-var dimensions
+class_name Map
+
+export var dimensions : Vector2
 
 func _ready():
 	dimensions = Vector2(2542, 1517)

@@ -1,0 +1,4 @@
+[gd_scene format=2]
+
+[node name="Pushable" type="TileMap" groups=["Pushable"]]
+format = 1
