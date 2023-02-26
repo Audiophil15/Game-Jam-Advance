@@ -24,4 +24,4 @@ script = ExtResource( 1 )
 frames = SubResource( 2 )
 
 [node name="Hitbox" parent="." index="1"]
-polygon = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
+polygon = PoolVector2Array( -23, -23, 23, -23, 23, 23, -23, 23 )

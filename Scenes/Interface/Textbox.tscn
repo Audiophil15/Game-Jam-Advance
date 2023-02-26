@@ -33,12 +33,12 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="MarginContainer"]
-margin_right = 1152.0
+margin_right = 1170.0
 margin_bottom = 215.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
-margin_right = 1152.0
+margin_right = 1170.0
 margin_bottom = 215.0
 custom_constants/margin_right = 35
 custom_constants/margin_top = 35
@@ -49,13 +49,13 @@ custom_constants/margin_bottom = 35
 visible = false
 margin_left = 35.0
 margin_top = 35.0
-margin_right = 1117.0
+margin_right = 1135.0
 margin_bottom = 180.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
 margin_left = 35.0
 margin_top = 35.0
-margin_right = 1117.0
+margin_right = 1135.0
 margin_bottom = 180.0
 
 [node name="Before" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer"]
