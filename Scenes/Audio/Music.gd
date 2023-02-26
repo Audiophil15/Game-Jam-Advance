@@ -1,7 +1,5 @@
-extends AudioStreamPlayer
-
-var minVol = -40
+extends Audio
 
 func _ready():
 	self.play()
-	$".".fadein(self)
+	$".".fadein()

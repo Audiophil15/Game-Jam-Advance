@@ -37,9 +37,13 @@ func _ready():
 	defaultSpeed = 50
 	dashSpeed = 5*defaultSpeed
 	pushSpeed = 0.2*defaultSpeed
-	swimSpeed = 1.1*defaultSpeed
+	swimSpeed = 0.6*defaultSpeed
+	climbSpeed = 0.5*defaultSpeed
 
-	isDashing = false
+	isDashing = 0
+	isSwimming = 0
+	isClimbing = 0
+	isPushing = 0
 	velocity = Vector2()
 	dashTestBodiesCounter = 0
 
@@ -51,8 +55,9 @@ func _ready():
 	isabletoClimb = 0
 	isabletoSwim = 0
 
-	learnDash()
-	learnSwim()
+#	learnDash()
+#	learnSwim()
+#	learnClimb()
 
 func _process(_delta):
 
@@ -61,13 +66,13 @@ func _process(_delta):
 	if not isDashing :
 		velocity = Vector2()
 		if Input.is_action_pressed("ui_right") :
-#			direction = "Up"
+			direction = "Right"
 			velocity.x += 1
 		if Input.is_action_pressed("ui_left") :
-#			direction = "Left"
+			direction = "Left"
 			velocity.x -= 1
 		if Input.is_action_pressed("ui_up") :
-#			direction = "Right"
+			direction = "Up"
 			velocity.y -= 1
 		if Input.is_action_pressed("ui_down") :
 			direction = "Down"
@@ -80,27 +85,32 @@ func _process(_delta):
 			movetype = "Dash"
 		if isSwimming :
 			movetype = "Swim"
+		if isClimbing :
+			movetype = "Climb"
+			direction = "Up"
 		if isPushing :
-			pass
-#			movetype = "Push"
+			movetype = "Push"
 	else :
 		movetype = "Idle"
+		if isSwimming :
+			movetype = "Swim"
 
-#	for i in range(5)
-#	print(self.get_collision_mask_bit())
-#	print(movetype, direction) #DEBUG
+	if velocity.x < 0 :
+		$Sprite.flip_h = true
+	if velocity.x > 0 :
+		$Sprite.flip_h = false
 
 	animate($Sprite, movetype, direction)
 
-	collided = move_and_slide(velocity.normalized() * (defaultSpeed if not isDashing else dashSpeed))
+	collided = move_and_slide(velocity.normalized() * (defaultSpeed if not (isDashing or isSwimming or isClimbing) else (isDashing*dashSpeed + isSwimming*swimSpeed + isClimbing*climbSpeed)))
 	if isabletoPush :
-		checkPushable()
+		checkPushing()
 
 func animate(spriteNode, type, dir) :
 	spriteNode.play(type+" "+dir)
 
 func dash() :
-	isDashing = true
+	isDashing = 1
 	dashStartPos = self.position
 	self.set_collision_mask_bit(1,0) # Remove bit 2
 	self.set_collision_mask_bit(2,1)
@@ -112,25 +122,27 @@ func dash() :
 	self.set_collision_mask_bit(1,1) # Remove bit 2
 	if isabletoClimb :
 		self.set_collision_mask_bit(2,0)
-	isDashing = false
+	isDashing = 0
 
 func _on_Testbody_body_entered(body):
-	print(body)
+#	print(body) # DEBUG
 	if body != self :
 		dashTestBodiesCounter += 1
 	if body.is_in_group("Water") :
-		print("Swimming") #DEBUG
+#		print("Swimming") #DEBUG
 		isSwimming = 1
+	if body.is_in_group("Cliff") :
+		isClimbing = 1
 
 func _on_Testbody_body_exited(body):
 	if body != self :
 		dashTestBodiesCounter -= 1
-		print("Exited") #DEBUG
+#		print("Exited") #DEBUG
 		isSwimming = 0
 		isClimbing = 0
-		isPushing = 0
 
-func checkPushable():
+func checkPushing():
+	isPushing = 0
 	if get_slide_count() > 0 :
 		if not(velocity.dot(Vector2(0,1)) and velocity.dot(Vector2(1,0))) :
 			var object = get_slide_collision(0).collider
