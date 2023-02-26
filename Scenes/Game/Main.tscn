@@ -51,6 +51,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[connection signal="mvp" from="Forest" to="." method="_on_Forest_mvp"]
 [connection signal="powerActivated" from="Statue" to="." method="_on_Statue_powerActivated"]
 [connection signal="powerActivated" from="Statue2" to="." method="_on_Statue_powerActivated"]
 [connection signal="powerActivated" from="Statue3" to="." method="_on_Statue_powerActivated"]

@@ -62,3 +62,6 @@ func characterMessage(characterName, msg) :
 
 func interfaceMessage(msg) :
 	$"UI/Narrator Text".queueText(msg)
+
+func _on_Forest_mvp(position):
+	$Player.position = position

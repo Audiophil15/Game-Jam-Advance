@@ -1,5 +1,7 @@
 extends Map
 
+signal mvp(position)
+
 var activatedSwitches
 
 func _ready():
@@ -18,3 +20,7 @@ func _on_Switch_body_entered(body):
 
 func _on_Switch_body_exited(body):
 	activatedSwitches -= 1
+
+func _on_Tunnel_mvp(position):
+	emit_signal("mvp", position)
+	pass # Replace with function body.

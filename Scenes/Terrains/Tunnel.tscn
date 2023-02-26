@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Objects/Portal.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Terrains/Tunnel.gd" type="Script" id=2]
+
+[node name="Tunnel" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Portal A" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PortalA - in" parent="Portal A" instance=ExtResource( 1 )]
+collision_layer = 32
+collision_mask = 32
+
+[node name="PortalA - out" parent="Portal A" instance=ExtResource( 1 )]
+collision_layer = 32
+collision_mask = 32
+
+[node name="Portal B" type="Node2D" parent="."]
+position = Vector2( 16, -5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PortalB - in" parent="Portal B" instance=ExtResource( 1 )]
+collision_layer = 32
+collision_mask = 32
+
+[node name="PortalB - out" parent="Portal B" instance=ExtResource( 1 )]
+collision_layer = 32
+collision_mask = 32
+
+[connection signal="body_entered" from="Portal A/PortalA - in" to="." method="_on_Portal_in_body_entered" binds= [ "\"A\"" ]]
+[connection signal="body_exited" from="Portal A/PortalA - out" to="." method="_on_Portal_out_body_exited" binds= [ "\"A\"" ]]
+[connection signal="body_entered" from="Portal B/PortalB - in" to="." method="_on_Portal_in_body_entered" binds= [ "\"B\"" ]]
+[connection signal="body_exited" from="Portal B/PortalB - out" to="." method="_on_Portal_out_body_exited" binds= [ "\"B\"" ]]
