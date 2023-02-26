@@ -13,7 +13,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(activatedSwitches)
 	if activatedSwitches == 2 :
 		$Door/Sprite.play("opening")
 		if not $Door/Audio.playing and not hasplayed :

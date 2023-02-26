@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Audio/Audio.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Visuals/Map/Reversal_Mountain_Summer_B2W2.png" type="Texture" id=3]
 [ext_resource path="res://Visuals/Map/Terrains.png" type="Texture" id=4]
+[ext_resource path="res://Visuals/Map/Tiles 2/FM-E.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Terrains/Dashable.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Terrains/Ground.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Terrains/Water.tscn" type="PackedScene" id=8]
@@ -82,6 +83,20 @@
 7/shape_one_way_margin = 0.0
 7/shapes = [  ]
 7/z_index = 0
+9/name = "FM-E.png 9"
+9/texture = ExtResource( 5 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 0, 0, 24, 24 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape_one_way = false
+9/shape_one_way_margin = 0.0
+9/shapes = [  ]
+9/z_index = 0
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 1 )

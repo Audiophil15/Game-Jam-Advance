@@ -7,8 +7,3 @@ func _ready():
 
 
 
-func _on_Portal_in_body_entered(body, side):
-	if side == "A" :
-		emit_signal("mvp", $"Portal B".position)
-		$
-
