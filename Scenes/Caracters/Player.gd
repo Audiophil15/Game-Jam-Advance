@@ -78,7 +78,7 @@ func _ready():
 
 func _process(_delta):
 
-	self.z_index = int(self.position.y)
+	self.z_index = int(self.get_global_position().y)
 
 	if not isDashing :
 		velocity = Vector2()
@@ -131,13 +131,16 @@ func dash() :
 	isDashing = 1
 	dashStartPos = self.position
 	self.set_collision_mask_bit(1,0) # Remove bit 2
+	self.set_collision_mask_bit(3,0) # Remove bit 4
 	self.set_collision_mask_bit(2,1)
 	yield(get_tree().create_timer(0.3), "timeout")
 	if dashTestBodiesCounter :
 		# Timeout pour l'anim de noyade/chute
-		if not isSwimming :
+		if not isabletoSwim :
 			self.position = dashStartPos
 	self.set_collision_mask_bit(1,1) # Remove bit 2
+	if not isabletoSwim :
+		self.set_collision_mask_bit(3,1) # Remove bit 4
 	if isabletoClimb :
 		self.set_collision_mask_bit(2,0)
 	isDashing = 0

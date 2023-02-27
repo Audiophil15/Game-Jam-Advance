@@ -8,10 +8,10 @@ var hasplayed = 0
 
 func _ready():
 	self.dimensions = Vector2(936, 312)
-	$Audio.play()
-	$Music.play()
-	$Music.fadein(-35)
-	$Audio.fadein(-35)
+#	$Audio.play()
+#	$Music.play()
+#	$Music.fadein(-35)
+#	$Audio.fadein(-35)
 	activatedSwitches = 0
 
 func _process(delta):
@@ -33,8 +33,8 @@ func _on_Tunnel_mvp(position):
 	emit_signal("mvp", position) # UNNEEDED
 
 func soundToHappy() :
-	$Audio.fadeout()
-	$Music.fadeout()
+#	$Audio.fadeout()
+#	$Music.fadeout()
 	$Audio.stream = load("res://Audio/Ambiances/Forêt_joyeuse.wav")
 	$Music.stream = load("res://Audio/Musics/Forest_happy.wav")
 	$Audio.play()

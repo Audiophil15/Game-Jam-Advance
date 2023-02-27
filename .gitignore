@@ -1,11 +1,12 @@
 # Import cache
 .import/
+**/*.import
 
 # Binaries
+Export/
 bin/
 build/
 lib/
 
 *~
-**/*.import
 

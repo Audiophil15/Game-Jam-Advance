@@ -3,7 +3,7 @@ extends KinematicBody2D
 class_name Pushable
 
 func _process(_delta):
-	self.z_index = int(self.position.y)
+	$AnimatedSprite.z_index = int(self.get_global_position().y)
 
 func push(velocity) :
 	move_and_slide(velocity)
