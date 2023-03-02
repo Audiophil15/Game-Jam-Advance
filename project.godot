@@ -9,12 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "AudioStreamPlayer",
-"class": "Audio",
-"language": "GDScript",
-"path": "res://Scenes/Audio/Audio.gd"
-}, {
-"base": "",
+"base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
@@ -28,12 +23,17 @@ _global_script_classes=[ {
 "class": "Pushable",
 "language": "GDScript",
 "path": "res://Scenes/Objects/Pushable Body.gd"
+}, {
+"base": "StaticBody2D",
+"class": "Statue",
+"language": "GDScript",
+"path": "res://Scenes/Caracters/Statue.gd"
 } ]
 _global_script_class_icons={
-"Audio": "",
 "GitAPI": "",
 "Map": "",
-"Pushable": ""
+"Pushable": "",
+"Statue": ""
 }
 
 [application]
@@ -41,6 +41,10 @@ _global_script_class_icons={
 config/name="Game Jam Advance"
 run/main_scene="res://Scenes/Game/Cinematic.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+PlayerId="*res://Globals/Player ID.gd"
 
 [display]
 

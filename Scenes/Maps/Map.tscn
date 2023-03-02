@@ -1,127 +1,47 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Audio/Audio.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Visuals/Map/Reversal_Mountain_Summer_B2W2.png" type="Texture" id=3]
-[ext_resource path="res://Visuals/Map/Terrains.png" type="Texture" id=4]
-[ext_resource path="res://Visuals/Map/Tiles 2/FM-E.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/Terrains/Dashable.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Terrains/Ground.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Terrains/Sand.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Terrains/Rock.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Caracters/Statue.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Terrains/Water.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Terrains/Walls.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Terrains/Cliff.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/Terrains/Pushable.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Terrains/Grass.tscn" type="PackedScene" id=11]
 
-[sub_resource type="TileSet" id=7]
-3/name = "Terrains.png 3"
-3/texture = ExtResource( 4 )
-3/tex_offset = Vector2( 0, 0 )
-3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 24, 0, 24, 24 )
-3/tile_mode = 0
-3/occluder_offset = Vector2( 0, 0 )
-3/navigation_offset = Vector2( 0, 0 )
-3/shape_offset = Vector2( 0, 0 )
-3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape_one_way = false
-3/shape_one_way_margin = 0.0
-3/shapes = [  ]
-3/z_index = 0
-4/name = "Terrains.png 4"
-4/texture = ExtResource( 4 )
-4/tex_offset = Vector2( 0, 0 )
-4/modulate = Color( 1, 1, 1, 1 )
-4/region = Rect2( 0, 96, 24, 24 )
-4/tile_mode = 0
-4/occluder_offset = Vector2( 0, 0 )
-4/navigation_offset = Vector2( 0, 0 )
-4/shape_offset = Vector2( 0, 0 )
-4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-4/shape_one_way = false
-4/shape_one_way_margin = 0.0
-4/shapes = [  ]
-4/z_index = 0
-5/name = "Terrains.png 5"
-5/texture = ExtResource( 4 )
-5/tex_offset = Vector2( 0, 0 )
-5/modulate = Color( 1, 1, 1, 1 )
-5/region = Rect2( 24, 96, 24, 24 )
-5/tile_mode = 0
-5/occluder_offset = Vector2( 0, 0 )
-5/navigation_offset = Vector2( 0, 0 )
-5/shape_offset = Vector2( 0, 0 )
-5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape_one_way = false
-5/shape_one_way_margin = 0.0
-5/shapes = [  ]
-5/z_index = 0
-6/name = "Terrains.png 6"
-6/texture = ExtResource( 4 )
-6/tex_offset = Vector2( 0, 0 )
-6/modulate = Color( 1, 1, 1, 1 )
-6/region = Rect2( 48, 96, 24, 24 )
-6/tile_mode = 0
-6/occluder_offset = Vector2( 0, 0 )
-6/navigation_offset = Vector2( 0, 0 )
-6/shape_offset = Vector2( 0, 0 )
-6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-6/shape_one_way = false
-6/shape_one_way_margin = 0.0
-6/shapes = [  ]
-6/z_index = 0
-7/name = "Terrains.png 7"
-7/texture = ExtResource( 4 )
-7/tex_offset = Vector2( 0, 0 )
-7/modulate = Color( 1, 1, 1, 1 )
-7/region = Rect2( 72, 96, 24, 24 )
-7/tile_mode = 0
-7/occluder_offset = Vector2( 0, 0 )
-7/navigation_offset = Vector2( 0, 0 )
-7/shape_offset = Vector2( 0, 0 )
-7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-7/shape_one_way = false
-7/shape_one_way_margin = 0.0
-7/shapes = [  ]
-7/z_index = 0
-9/name = "FM-E.png 9"
-9/texture = ExtResource( 5 )
-9/tex_offset = Vector2( 0, 0 )
-9/modulate = Color( 1, 1, 1, 1 )
-9/region = Rect2( 0, 0, 24, 24 )
-9/tile_mode = 0
-9/occluder_offset = Vector2( 0, 0 )
-9/navigation_offset = Vector2( 0, 0 )
-9/shape_offset = Vector2( 0, 0 )
-9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-9/shape_one_way = false
-9/shape_one_way_margin = 0.0
-9/shapes = [  ]
-9/z_index = 0
-
-[node name="Map" type="Node2D"]
+[node name="Area" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 2542.0
-margin_bottom = 1517.0
-texture = ExtResource( 3 )
-stretch_mode = 2
+[node name="Sand" parent="." instance=ExtResource( 3 )]
 
-[node name="Ground" parent="." instance=ExtResource( 7 )]
-tile_set = SubResource( 7 )
+[node name="Grass" parent="." instance=ExtResource( 11 )]
 
-[node name="Water" parent="." instance=ExtResource( 8 )]
+[node name="Rock" parent="." instance=ExtResource( 4 )]
 
 [node name="Cliff" parent="." instance=ExtResource( 10 )]
 
-[node name="Dashable" parent="." instance=ExtResource( 6 )]
+[node name="Water" parent="." instance=ExtResource( 8 )]
 
 [node name="Walls" parent="." instance=ExtResource( 9 )]
 cell_size = Vector2( 16, 16 )
 
-[node name="Pushable" parent="." instance=ExtResource( 11 )]
+[node name="Happy Music" parent="." instance=ExtResource( 2 )]
 
-[node name="Audio" parent="." instance=ExtResource( 2 )]
+[node name="Sad Music" parent="." instance=ExtResource( 2 )]
+
+[node name="Happy Ambiance" parent="." instance=ExtResource( 2 )]
+
+[node name="Sad Ambiance" parent="." instance=ExtResource( 2 )]
+
+[node name="Player detector" type="Area2D" parent="."]
+
+[node name="Area" type="CollisionPolygon2D" parent="Player detector"]
+
+[node name="Statue" parent="." instance=ExtResource( 5 )]
+
+[connection signal="body_entered" from="Player detector" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Player detector" to="." method="_on_body_exited"]
+[connection signal="powerActivated" from="Statue" to="." method="_on_Statue_powerActivated"]
+
+[editable path="Statue"]

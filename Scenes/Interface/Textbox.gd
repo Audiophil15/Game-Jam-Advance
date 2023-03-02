@@ -25,7 +25,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	match currentState :
 		State.READY :
 			if !textQueue.empty() :
@@ -50,8 +50,8 @@ func hide():
 func show():
 	$MarginContainer.show()
 
-func queueText(text):
-	textQueue.push_back(text)
+func queueText(txt):
+	textQueue.push_back(txt)
 
 func displayText():
 	var newText = textQueue.pop_front()

@@ -4,9 +4,9 @@
 
 # Binaries
 Export/
-bin/
-build/
-lib/
 
+# Other teams' games
+Submissions
+
+**/*.fuse*
 *~
-

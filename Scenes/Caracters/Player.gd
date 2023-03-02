@@ -27,10 +27,14 @@ var isabletoSwim
 var sndDash
 var sndSwim
 var sndStepForest
-var sndStepGrt
+var sndStepMnt
 var sndStepSand
 var sndPlouf
 
+#var currentZone
+#var enteringZone
+var stopswim
+var continueswimming
 
 """
 Masks :
@@ -63,20 +67,24 @@ func _ready():
 	isabletoClimb = 0
 	isabletoSwim = 0
 
-	sndDash = "res://Audio/Sounds/Dash_v1.wav"
-	sndSwim = "res://Audio/Sounds/Nage_v1.wav"
-	sndStepForest = "res://Audio/Sounds/pas_forêt_v1.wav"
-	sndStepGrt = "res://Audio/Sounds/pas_grotte_v1.wav"
-	sndStepSand = "res://Audio/Sounds/pas_sable_v1.wav"
-	sndPlouf = "res://Audio/Sounds/Plouf_v1.wav"
+	sndDash = preload("res://Audio/Sounds/Dash_v1.wav")
+	sndSwim = preload("res://Audio/Sounds/Nage_v1.wav")
+	sndStepForest = preload("res://Audio/Sounds/pas_forêt_v1.wav")
+	sndStepMnt = preload("res://Audio/Sounds/pas_grotte_v1.wav")
+	sndStepSand = preload("res://Audio/Sounds/pas_sable_v1.wav")
+	sndPlouf = preload("res://Audio/Sounds/Plouf_v1.wav")
 
-	$Audio.stream = load(sndPlouf)
+#	currentZone = null
+#	enteringZone = null
 
+	$"/root/PlayerId".playerID = self.get_instance_id()
 #	learnDash()
-#	learnSwim()
+	learnSwim()
 #	learnClimb()
 
 func _process(_delta):
+
+#	print(isabletoDash, isClimbing, isSwimming)
 
 	self.z_index = int(self.get_global_position().y)
 
@@ -107,6 +115,8 @@ func _process(_delta):
 			direction = "Up"
 		if isPushing :
 			movetype = "Push"
+		if not $Audio.playing :
+			$Audio.play()
 
 	else :
 		movetype = "Idle"
@@ -124,20 +134,24 @@ func _process(_delta):
 	if isabletoPush :
 		checkPushing()
 
+#	print(currentZone, enteringZone)
+
 func animate(spriteNode, type, dir) :
 	spriteNode.play(type+" "+dir)
 
 func dash() :
+	var oldsnd = $Audio.stream
+	$Audio.stream = sndDash
+	$Audio.play()
+	$Audio.stream = oldsnd
 	isDashing = 1
 	dashStartPos = self.position
 	self.set_collision_mask_bit(1,0) # Remove bit 2
 	self.set_collision_mask_bit(3,0) # Remove bit 4
 	self.set_collision_mask_bit(2,1)
 	yield(get_tree().create_timer(0.3), "timeout")
-	if dashTestBodiesCounter :
-		# Timeout pour l'anim de noyade/chute
-		if not isabletoSwim :
-			self.position = dashStartPos
+	if isSwimming and not isabletoSwim :
+		self.position = dashStartPos
 	self.set_collision_mask_bit(1,1) # Remove bit 2
 	if not isabletoSwim :
 		self.set_collision_mask_bit(3,1) # Remove bit 4
@@ -146,23 +160,56 @@ func dash() :
 	isDashing = 0
 
 func _on_Testbody_body_entered(body):
-#	print(body) # DEBUG
-	if body != self :
-		dashTestBodiesCounter += 1
-	if body.is_in_group("Water") :
-		$Audio.play()
-#		print("Swimming") #DEBUG
-		isSwimming = 1
+#	print(body.get_groups()) # DEBUG
+#	if body != self :
+##		dashTestBodiesCounter += 1
+#	print(body, "in")
+#	if body.get_instance_id() != $"/root/PlayerId".playerID :
+#		if currentZone == null :
+#			currentZone = body
+#			enteringZone = body
+
 	if body.is_in_group("Cliff") :
 		isClimbing = 1
+	if body.is_in_group("Water") :
+		if isSwimming :
+			continueswimming = 1
+		isSwimming = 1
+	else :
+		stopswim = 1
+
+	if body.is_in_group("Water") :
+		$Audio.stream = sndPlouf
+		$Audio.play()
+		yield($Audio, "finished")
+		$Audio.stream = sndSwim
+	if body.is_in_group("Grass") :
+		$Audio.stream = sndStepForest
+	if body.is_in_group("Sand") :
+		$Audio.stream = sndStepSand
+	if body.is_in_group("Rock") or body.is_in_group("Cliff") :
+		$Audio.stream = sndStepMnt
+#		enteringZone = body
 
 func _on_Testbody_body_exited(body):
-	if body != self :
-		dashTestBodiesCounter -= 1
+#	if body != self :
+#		dashTestBodiesCounter -= 1
 #		print("Exited") #DEBUG
-		isSwimming = 0
-		isClimbing = 0
+#	print(body, "out")
 
+#	if enteringZone.get_groups() != body.get_groups() :
+
+#	if body.get_groups() != enteringZone.get_groups() and currentZone.get_groups() != enteringZone.get_groups() :
+#	if body.get_groups() == currentZone.get_groups() :
+#		currentZone = enteringZone
+#	if not (enteringZone.is_in_group("Water") and currentZone.is_in_group("Water")) :
+#	if not continueswimming or not (not body.is_in_group("Water") and isSwimming) :
+	if body.is_in_group("Water") :
+		isSwimming = 0
+#	continueswimming = 0
+#	if not (enteringZone.is_in_group("Cliff") and currentZone.is_in_group("Cliff")) :
+	if body.is_in_group("Cliff") :
+		isClimbing = 0
 func checkPushing():
 	isPushing = 0
 	if get_slide_count() > 0 :

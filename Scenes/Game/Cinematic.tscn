@@ -14,7 +14,7 @@ animation = "Cinematic"
 
 [sub_resource type="Animation" id=1]
 resource_name = "Cinematic"
-length = 20.0
+length = 25.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextureRect:modulate")
 tracks/0/interp = 1
@@ -22,7 +22,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1, 6, 7, 9.9, 10.8 ),
+"times": PoolRealArray( 0.1, 6, 7, 11.4, 12.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -34,7 +34,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.1, 7.9, 9.2, 12.9, 13.8 ),
+"times": PoolRealArray( 0.1, 10.1, 11.4, 16.1, 17 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -46,7 +46,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 10.5, 12, 15.6, 16.5 ),
+"times": PoolRealArray( 0, 14.6, 16.1, 20.5, 21.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -58,7 +58,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.1, 13.1, 14.5, 18, 19 ),
+"times": PoolRealArray( 0.1, 19.1, 20.5, 24, 25 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -68,7 +68,7 @@ tracks/4/path = NodePath("TextureRect/text:custom_fonts/font:outline_color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 7 ),
 "transitions": PoolRealArray( 1 ),
@@ -82,7 +82,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 19.5 ),
+"times": PoolRealArray( 25 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ null ],

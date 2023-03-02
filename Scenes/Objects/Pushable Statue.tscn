@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Objects/Pushable Body.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Audio/Sounds/Push_statue_v1.wav" type="AudioStream" id=2]
+[ext_resource path="res://Scenes/Objects/Pushable Statue.gd" type="Script" id=3]
+
+[node name="Pushable Statue" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Audio" parent="." index="2"]
+stream = ExtResource( 2 )

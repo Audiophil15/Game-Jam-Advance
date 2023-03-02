@@ -1,9 +1,0 @@
-[gd_scene format=2]
-
-[node name="Dashable Gap" type="StaticBody2D"]
-position = Vector2( 2, 0 )
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 628, 166, 628, 209, 707, 210, 707, 165 )

@@ -1,13 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Game/Main.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Caracters/Statue.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Caracters/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Interface/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Maps/Forest.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Interface/Pause.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Maps/Mountain.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Audio/Audio.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Maps/Beach.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Maps/Centre.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Interface/SceneFader.tscn" type="PackedScene" id=11]
@@ -23,20 +21,32 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 pause_mode = 1
-position = Vector2( 888, 624 )
+position = Vector2( 1608, 696 )
 z_as_relative = true
 
-[node name="Zone 1" parent="." instance=ExtResource( 10 )]
+[node name="Centre" parent="." instance=ExtResource( 10 )]
 position = Vector2( 792, 528 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Zone 2" parent="." instance=ExtResource( 5 )]
+[node name="Forest" parent="." instance=ExtResource( 5 )]
 position = Vector2( 144, 648 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Zone 3" parent="." instance=ExtResource( 7 )]
+[node name="Mountain" parent="." instance=ExtResource( 7 )]
 position = Vector2( 96, 48 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Zone 4" parent="." instance=ExtResource( 9 )]
-position = Vector2( 876, 216 )
+[node name="Beach" parent="." instance=ExtResource( 9 )]
+position = Vector2( 888, 216 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 888, 624 )
@@ -44,18 +54,6 @@ current = true
 zoom = Vector2( 0.15, 0.15 )
 smoothing_enabled = true
 smoothing_speed = 15.0
-
-[node name="Statue1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 288, 708 )
-statueID = 2
-
-[node name="Statue2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 792, 324 )
-statueID = 3
-
-[node name="Statue3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1608, 732 )
-statueID = 4
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
 __meta__ = {
@@ -70,19 +68,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Amb" parent="." instance=ExtResource( 8 )]
-
-[node name="Music" parent="." instance=ExtResource( 8 )]
-
 [node name="SceneFader" parent="." instance=ExtResource( 11 )]
 
-[connection signal="body" from="Zone 1" to="." method="bodyEnteredMap" binds= [ 1 ]]
-[connection signal="body" from="Zone 2" to="." method="bodyEnteredMap" binds= [ 2 ]]
-[connection signal="body" from="Zone 3" to="." method="bodyEnteredMap" binds= [ 3 ]]
-[connection signal="mvp" from="Zone 3" to="." method="_on_mvp"]
-[connection signal="body" from="Zone 4" to="." method="bodyEnteredMap" binds= [ 4 ]]
-[connection signal="powerActivated" from="Statue1" to="." method="_on_Statue_powerActivated"]
-[connection signal="powerActivated" from="Statue2" to="." method="_on_Statue_powerActivated"]
-[connection signal="powerActivated" from="Statue3" to="." method="_on_Statue_powerActivated"]
-
-[editable path="Statue1"]
+[connection signal="playerIn" from="Centre" to="." method="onPlayerInsideCentre"]
+[connection signal="powerActivated" from="Forest" to="." method="_on_Statue_powerActivated"]
+[connection signal="mvp" from="Mountain" to="." method="_on_mvp"]
+[connection signal="powerActivated" from="Mountain" to="." method="_on_Statue_powerActivated"]
+[connection signal="powerActivated" from="Beach" to="." method="_on_Statue_powerActivated"]

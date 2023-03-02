@@ -3,8 +3,8 @@
 [ext_resource path="res://Scenes/Game/SplashScreen.gd" type="Script" id=1]
 [ext_resource path="res://Visuals/Logo.png" type="Texture" id=2]
 [ext_resource path="res://Visuals/Fonts/immortal/IMMORTAL.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Audio/Musics/Menu.wav" type="AudioStream" id=4]
-[ext_resource path="res://Scenes/Audio/Music.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Audio/Audio.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Audio/Musics/Menu.wav" type="AudioStream" id=5]
 [ext_resource path="res://Scenes/Interface/SceneFader.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFontData" id=1]
@@ -104,10 +104,10 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="Music" parent="." instance=ExtResource( 5 )]
-stream = ExtResource( 4 )
-
 [node name="SceneFader" parent="." instance=ExtResource( 6 )]
+
+[node name="Audio" parent="." instance=ExtResource( 4 )]
+stream = ExtResource( 5 )
 
 [connection signal="mouse_entered" from="Play" to="." method="_on_Play_mouse_entered"]
 [connection signal="mouse_exited" from="Play" to="." method="_on_Play_mouse_exited"]

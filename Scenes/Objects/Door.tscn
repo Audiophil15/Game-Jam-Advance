@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Audio/Sounds/Door.wav" type="AudioStream" id=1]
+[ext_resource path="res://Visuals/Objects/closedoor.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Audio/Audio.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Visuals/Objects/opendoor.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": false,
+"name": "opening",
+"speed": 1.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 24, 5 )
+
+[node name="Door" type="KinematicBody2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+animation = "opening"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 18 )
+shape = SubResource( 4 )
+
+[node name="Audio" parent="." instance=ExtResource( 4 )]
+stream = ExtResource( 1 )
+volume_db = 3.562
